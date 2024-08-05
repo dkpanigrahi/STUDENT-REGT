@@ -1,15 +1,17 @@
 package com.student.entity;
 
-
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String name;
     private String address;
 
@@ -17,8 +19,8 @@ public class Student {
     @JoinTable(
         name = "student_subject",
         joinColumns = @JoinColumn(name = "student_id"),
-        inverseJoinColumns = @JoinColumn(name = "subject_id")
-    )
+        inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    
     private Set<Subject> subjects = new HashSet<>();
 
 	public Long getId() {
@@ -53,6 +55,5 @@ public class Student {
 		this.subjects = subjects;
 	}
 
-   
+    
 }
-

@@ -3,14 +3,17 @@ package com.student.entity;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "subjects")
     private Set<Student> students = new HashSet<>();
 
@@ -38,5 +41,6 @@ public class Subject {
 		this.students = students;
 	}
 
+    
     
 }

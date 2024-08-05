@@ -12,6 +12,10 @@ import java.util.List;
 public class SubjectService {
     @Autowired
     private SubjectRepository subjectRepository;
+    
+    public Subject createSubject(Subject subject) {
+    	return subjectRepository.save(subject);
+    }
 
     public List<Subject> getAllSubjects() {
         return subjectRepository.findAll();
